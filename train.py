@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 
 from src.pipeline.build_pipeline import create_pipeline
 from src.models.train_evaluate import evaluate_model
-
+from joblib import dump
 
 # ENVIRONMENT CONFIGURATION ---------------------------
 
@@ -73,7 +73,7 @@ pipe = create_pipeline(
 
 pipe.fit(X_train, y_train)
 
-
+dump(pipe, "model.joblib")
 # Evaluate the model
 score, matrix = evaluate_model(pipe, X_test, y_test)
 
